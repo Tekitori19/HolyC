@@ -35,11 +35,8 @@ void KiemTraDiemSo(char *text, float *so) {
 }
 
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH +- 2 SỐ ============================================================
-void Tong(float so_thu_nhat,  float so_thu_hai) {
+void TongHieu2So(float so_thu_nhat,  float so_thu_hai) {
     printf("Tong 2 so: %f\n", so_thu_nhat+so_thu_hai);
-}
-
-void Hieu2So(float so_thu_nhat,  float so_thu_hai) {
     printf("So thu nhat - so thu hai= %f\n", so_thu_nhat-so_thu_hai);
     printf("So thu hai - so thu nhat= %f\n", so_thu_hai-so_thu_nhat);
 }
@@ -47,7 +44,7 @@ void Hieu2So(float so_thu_nhat,  float so_thu_hai) {
 
 
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH HCN =======================================
-void ChuViHCN(float chieu_dai, float chieu_rong) {
+void HCN(float chieu_dai, float chieu_rong) {
 
     if (chieu_dai < 0 || chieu_rong <0) {
         printf("ERROR: Chieu dai va chieu rong phai la so duong");
@@ -55,24 +52,15 @@ void ChuViHCN(float chieu_dai, float chieu_rong) {
     }
 
     float chu_vi = (chieu_dai + chieu_rong)*2;
-    printf("Hinh chu nhat voi chieu dai %f, chieu rong %f co chu vi la: %f\n", chieu_dai, chieu_rong, chu_vi);
-}
-
-void DienTichHCN(float chieu_dai, float chieu_rong) {
-
-    if (chieu_dai < 0 || chieu_rong <0) {
-        printf("ERROR: Chieu dai va chieu rong phai la so duong");
-        return;
-    }
-
     float dien_tich = chieu_dai *chieu_rong;
     printf("Hinh chu nhat voi chieu dai %f, chieu rong %f co dien tich la: %f\n", chieu_dai, chieu_rong, dien_tich);
+    printf("Hinh chu nhat voi chieu dai %f, chieu rong %f co chu vi la: %f\n", chieu_dai, chieu_rong, chu_vi);
 }
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH HCN =======================================
 
 
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH TRÒN ======================================
-void ChuViHinhTron(float ban_kinh) {
+void HinhTron(float ban_kinh) {
     
     if (ban_kinh < 0) {
         printf("ERROR: Ban kinh phai la so duong");
@@ -80,19 +68,11 @@ void ChuViHinhTron(float ban_kinh) {
     }
     
     float chu_vi = 2*PI*ban_kinh;
+    float dien_tich = ban_kinh*ban_kinh*PI;
+    printf("Dien tich hinh tron co ban kinh %f la: %f\n", ban_kinh, dien_tich);
     printf("Chu vi hinh tron co ban kinh %f la: %f\n", ban_kinh, chu_vi);
 }
 
-void DienTichHinhTron(float ban_kinh) {
-
-    if (ban_kinh < 0) {
-        printf("ERROR: Ban kinh phai la so duong");
-        return;
-    }
-
-    float dien_tich = ban_kinh*ban_kinh*PI;
-    printf("Chu vi hinh tron co ban kinh %f la: %f\n", ban_kinh, dien_tich);
-}
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH TRÒN ======================================
 
 
@@ -107,7 +87,6 @@ void DiemTrungBinh(float toan, float li, float hoa) {
     float diem_trung_binh = (toan*3 + li*2 +hoa)/9;
     printf("Diem trung binh 3 mon la: %f", diem_trung_binh);
 }
-
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH ĐIỂM TRUNG BÌNH ===============================================
 
 int main() {
@@ -118,8 +97,7 @@ int main() {
         InVaNhapGiaTri("Nhap so thu nhat: ", &so_thu_nhat);
         InVaNhapGiaTri("Nhap so thu hai: ", &so_thu_hai);
 
-        Tong(so_thu_nhat,so_thu_hai);
-        Hieu2So(so_thu_nhat,so_thu_hai);
+        TongHieu2So(so_thu_nhat,so_thu_hai);
     }
     //  XÂY DỰNG CHƯƠNG TRÌNH +- 2 SỐ
 
@@ -132,8 +110,7 @@ int main() {
         InVaNhapGiaTriKhongAm("Nhap chieu dai: ", &chieu_dai);
         InVaNhapGiaTriKhongAm("Nhap chieu rong: ", &chieu_rong);
 
-        ChuViHCN(chieu_dai, chieu_rong);
-        DienTichHCN(chieu_dai, chieu_rong);
+        HCN(chieu_dai, chieu_rong);
     }
     // XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH HCN
     
@@ -144,8 +121,7 @@ int main() {
 
         InVaNhapGiaTriKhongAm("Nhap ban kinh hinh tron: ", &ban_kinh);
 
-        ChuViHinhTron(ban_kinh);
-        DienTichHinhTron(ban_kinh);
+        HinhTron(ban_kinh);
     }
     // XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH HÌNH TRÒN
 
