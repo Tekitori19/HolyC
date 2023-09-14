@@ -36,9 +36,9 @@ void KiemTraDiemSo(char *text, float *so) {
 
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH +- 2 SỐ ============================================================
 void TongHieu2So(float so_thu_nhat,  float so_thu_hai) {
-    printf("Tong 2 so: %f\n", so_thu_nhat+so_thu_hai);
-    printf("So thu nhat - so thu hai= %f\n", so_thu_nhat-so_thu_hai);
-    printf("So thu hai - so thu nhat= %f\n", so_thu_hai-so_thu_nhat);
+    printf("Tong 2 so: %.1f\n", so_thu_nhat+so_thu_hai);
+    printf("So thu nhat - so thu hai= %.1f\n", so_thu_nhat-so_thu_hai);
+    printf("So thu hai - so thu nhat= %.1f\n", so_thu_hai-so_thu_nhat);
 }
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH +- 2 SỐ ============================================================
 
@@ -53,8 +53,8 @@ void HCN(float chieu_dai, float chieu_rong) {
 
     float chu_vi = (chieu_dai + chieu_rong)*2;
     float dien_tich = chieu_dai *chieu_rong;
-    printf("Hinh chu nhat voi chieu dai %f, chieu rong %f co dien tich la: %f\n", chieu_dai, chieu_rong, dien_tich);
-    printf("Hinh chu nhat voi chieu dai %f, chieu rong %f co chu vi la: %f\n", chieu_dai, chieu_rong, chu_vi);
+    printf("Hinh chu nhat voi chieu dai %.1f, chieu rong %.1f co dien tich la: %.1f\n", chieu_dai, chieu_rong, dien_tich);
+    printf("Hinh chu nhat voi chieu dai %.1f, chieu rong %.1f co chu vi la: %.1f\n", chieu_dai, chieu_rong, chu_vi);
 }
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH HCN =======================================
 
@@ -69,8 +69,8 @@ void HinhTron(float ban_kinh) {
     
     float chu_vi = 2*PI*ban_kinh;
     float dien_tich = ban_kinh*ban_kinh*PI;
-    printf("Dien tich hinh tron co ban kinh %f la: %f\n", ban_kinh, dien_tich);
-    printf("Chu vi hinh tron co ban kinh %f la: %f\n", ban_kinh, chu_vi);
+    printf("Dien tich hinh tron co ban kinh %.1f la: %.1f\n", ban_kinh, dien_tich);
+    printf("Chu vi hinh tron co ban kinh %.1f la: %.1f\n", ban_kinh, chu_vi);
 }
 
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH CHU VI VÀ DIỆN TÍCH TRÒN ======================================
@@ -85,7 +85,7 @@ void DiemTrungBinh(float toan, float li, float hoa) {
     }
 
     float diem_trung_binh = (toan*3 + li*2 +hoa)/9;
-    printf("Diem trung binh 3 mon la: %f", diem_trung_binh);
+    printf("Diem trung binh 3 mon la: %.2f", diem_trung_binh);
 }
 //======================================= XÂY DỰNG CHƯƠNG TRÌNH TÍNH ĐIỂM TRUNG BÌNH ===============================================
 
