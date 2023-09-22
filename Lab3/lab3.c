@@ -116,7 +116,7 @@ void GiaiPhuongTrinhBac2() {
 
 void TinhTienDien() {
 
-    float so_dien;
+    float so_dien, tien;
 
     InVaNhapGiaTriKhongAm("Vui long nhap so dien tieu thu: ", &so_dien);
 
@@ -127,26 +127,29 @@ void TinhTienDien() {
     const int gia_dien_bac5 = 2834;
     const int gia_dien_bac6 = 2927;
 
-    if (so_dien >= 0 && so_dien <= 50) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac1);
+    if (so_dien <= 50) {
+        tien = so_dien*gia_dien_bac1;
+        printf("Gia tien la: %0.1f dong", tien);
     }
-    else if (so_dien >= 51 && so_dien <= 100) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac2);
+    else if (so_dien <= 100) {
+        tien = (50*gia_dien_bac1) + (so_dien - 50) * gia_dien_bac2;
+        printf("Gia tien la: %0.1f dong", tien);
     }
-    else if (so_dien >= 101 && so_dien <= 200) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac3);
+    else if (so_dien <= 200) {
+        tien = (50 * gia_dien_bac1) + (50 * gia_dien_bac2) + (so_dien - 100) * gia_dien_bac3;
+        printf("Gia tien la: %0.1f dong", tien);
     }
-    else if (so_dien >= 201 && so_dien <= 300) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac4);
+    else if (so_dien <= 300) {
+        tien = (50 * gia_dien_bac1) + (50 * gia_dien_bac2) + (100 * gia_dien_bac3) + (so_dien - 200) * gia_dien_bac4;
+        printf("Gia tien la: %0.1f dong", tien);
     }
-    else if (so_dien >= 301 && so_dien <= 400) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac5);
-    }
-    else if (so_dien >= 401) {
-        printf("Gia tien la: %0.1f dong", so_dien * gia_dien_bac6);
+    else if (so_dien <= 400) { 
+        tien = (50 * gia_dien_bac1) + (50 * gia_dien_bac2) + (100 * gia_dien_bac3) + (100 * gia_dien_bac4) + (so_dien - 300) * gia_dien_bac5;
+        printf("Gia tien la: %0.1f dong", tien);
     }
     else{
-        printf("Khong the xac dinh");
+        tien = (50 * gia_dien_bac1) + (50 * gia_dien_bac2) + (100 * gia_dien_bac3) + (100 * gia_dien_bac4) + (100 * gia_dien_bac5) + (so_dien - 400) * gia_dien_bac6;
+        printf("Gia tien la: %0.1f dong", tien);
     }
 }
 
@@ -207,49 +210,5 @@ void Menu() {
 }
 
 void main() {
-    // CHƯƠNG TRÌNH TÍNH HỌC LỰC
-    // {
-    //     printf("Chuong trinh tinh hoc luc\n");
-    //     float so_diem;
-    //     InVaNhapGiaTriKhongAm("Vui long nhap diem: ", &so_diem, 10);
-    //     TinhHocLuc(so_diem);
-    // }
-    // CHƯƠNG TRÌNH TÍNH HỌC LỰC
-
-    // CHƯƠNG TRÌNH GIẢI PHƯƠNG TRÌNH BẬC 1
-    {
-        // printf("Chuong trinh giai phuong trinh bac 1 (ax + b = 0)\n");
-        // float a, b;
-        // InVaNhapGiaTri("Vui long nhap a: ", &a);
-        // InVaNhapGiaTri("Vui long nhap b: ", &b);
-        // GiaiPhuongTrinhBac1(a, b);
-    }
-    // CHƯƠNG TRÌNH GIẢI PHƯƠNG TRÌNH BẬC 1
-
-    // CHƯƠNG TRÌNH GIẢI PHƯƠNG TRÌNH BẬC 2
-    {
-        // printf("Chuong trinh giai phuong trinh bac 1 (ax^2 + bx +c = 0)\n");
-
-        // float a, b, c;
-
-        // InVaNhapGiaTri("Vui long nhap a: ", &a);
-        // InVaNhapGiaTri("Vui long nhap b: ", &b);
-        // InVaNhapGiaTri("Vui long nhap c: ", &c);
-
-        // GiaiPhuongTrinhBac2(a, b, c);
-    }
-    // CHƯƠNG TRÌNH GIẢI PHƯƠNG TRÌNH BẬC 2
-    
-    // CHƯƠNG TRÌNH TÍNH TIỀN ĐIỆN
-    {
-        // float so_dien;
-
-        // InVaNhapGiaTriKhongAm("Vui long nhap so dien tieu thu: ", &so_dien);
-
-        // TinhTienDien(so_dien);
-    }
-    // CHƯƠNG TRÌNH TÍNH TIỀN ĐIỆN
-
     Menu();
-
 }
