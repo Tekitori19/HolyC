@@ -18,6 +18,14 @@ void TrungBinhTong() {
     int min, max;
     InVaNhapGiaTriKhongAm("\tNhap gia tri nho nhat: ", &min);
     InVaNhapGiaTriKhongAm("\tNhap gia tri lon nhat: ", &max);
+
+    while (min > max)
+    {
+        printf("\n\t\tMin khong duoc nho hon max\n");
+        InVaNhapGiaTriKhongAm("\t\tNhap lai gia tri nho nhat: ", &min);
+        InVaNhapGiaTriKhongAm("\t\tNhap lai gia tri lon nhat: ", &max);    
+    }
+
     int i = min;
     float tong = 0, bien_dem = 0, trung_binh = 0;
     while (i <= max)
@@ -37,6 +45,13 @@ void XacDinhSoNguyenTo() {
     printf("\n\tTim so nguyen to\n");
     int x;
     InVaNhapGiaTriKhongAm("\tNhap gia tri can xac dinh: ", &x);
+    
+    while (x < 2)
+    {
+        printf("\n\t\tSo nguyen to phai bat dau tu 2\n");
+        InVaNhapGiaTriKhongAm("\t\tNhap lai: ", &x);    
+    }
+
     for (int i = 2; i < x; i++)
     {
         if (x % i == 0)
