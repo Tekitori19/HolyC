@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+// THAM KHẢO TẠI https://stackoverflow.com/questions/3437404/min-and-max-in-c
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
 int GiaTriLonNhat(int so_1, int so_2, int so_3) {
     if( so_1 > so_2) {
         if (so_1 > so_3)
@@ -40,12 +44,13 @@ void HoanVi(int *so_1, int *so_2) {
 void main() {
     // TÌM GIÁ TRỊ LỚN NHẤT
     {
-        int so_1, so_2, so_3;
-        printf("Nhap lan luot 3 so: ");
-        scanf("%d %d %d", &so_1, &so_2, &so_3);
+    //     int so_1, so_2, so_3;
+    //     printf("Nhap lan luot 3 so: ");
+    //     scanf("%d %d %d", &so_1, &so_2, &so_3);
         
-        int value = GiaTriLonNhat(so_1, so_2, so_3);
-        printf("%d\n", value);
+    //     // int value = GiaTriLonNhat(so_1, so_2, so_3);
+    //     int value = MAX(MAX(so_1,so_2),so_3);
+    //     printf("%d\n la gia tri lon nhat", value);
     }
     // TÌM GIÁ TRỊ LỚN NHẤT
 
@@ -68,12 +73,12 @@ void main() {
 
     // HOÁN VỊ
     {
-        int so_1, so_2;
-        printf("Moi nhap 2 so: ");
-        scanf("%d %d", &so_1, &so_2);
+        // int so_1, so_2;
+        // printf("Moi nhap 2 so: ");
+        // scanf("%d %d", &so_1, &so_2);
         
-        HoanVi(&so_1, &so_2);
-        printf("Sau khi hoan vi: so_1=%d so_2=%d\n", so_1, so_2);
+        // HoanVi(&so_1, &so_2);
+        // printf("Sau khi hoan vi: so_1=%d so_2=%d\n", so_1, so_2);
     }
     // HOÁN VỊ
 }

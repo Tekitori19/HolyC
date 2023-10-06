@@ -28,6 +28,18 @@ void InVaNhapGiaTriDuongKhac0(char *text, int *so) {
         }
 }
 
+void InVaNhapGiaTriDuongKhac0F(char *text, float *so) {
+    printf(text);
+    scanf("%f",so);
+    
+    while (*so == 0 || *so < 0)
+        {
+            printf("\t!!!! CHI DUOC PHEP NHAP SO DUONG KHAC 0 !!!!\n");
+            printf("Nhap lai: ");
+            scanf("%f",so);
+        }
+}
+
 void InVaNhapGiaTriKhongAmCoDieuKien(char *text, int *so, int dieu_kien_1, int dieu_kien_2) {
     printf(text);
     scanf("%d",so);
@@ -205,64 +217,58 @@ void TinhTienDien() {
 void DoiTien() {
     printf("\tChuc nang doi tien");
     int tien_can_doi;
-    int tien_500 = 0;
-    int tien_200 = 0;
-    int tien_100 = 0;
-    int tien_50 = 0;
-    int tien_20 = 0;
-    int tien_10 = 0;
-    int tien_5 = 0;
-    int tien_2 = 0;
-    int tien_1 = 0;
     InVaNhapGiaTriDuongKhac0("\n\tNhap tien can doi: ", &tien_can_doi);
-    int tien = tien_can_doi;
-    while (tien_can_doi > 0)
-    {
-        if (tien_can_doi >= 500)
-        {
-            tien_500 = tien_can_doi/500;
-            tien_can_doi %= 500;
-        } else if (tien_can_doi >= 200)
-        {
-            tien_200 = tien_can_doi/200;
-            tien_can_doi %= 200;
-        } else if (tien_can_doi >= 100)
-        {
-            tien_100 = tien_can_doi/100;
-            tien_can_doi %= 100;
-        } else if (tien_can_doi >= 50)
-        {
-            tien_50 = tien_can_doi/50;
-            tien_can_doi %= 50;
-        } else if (tien_can_doi >= 20)
-        {
-            tien_20 = tien_can_doi/20;
-            tien_can_doi %= 20;
-        } else if (tien_can_doi >= 10)
-        {
-            tien_10 = tien_can_doi/10;
-            tien_can_doi %= 10;
-        } else if (tien_can_doi >= 5)
-        {
-            tien_5 = tien_can_doi/5;
-            tien_can_doi %= 5;
-        } else if (tien_can_doi >= 2)
-        {
-            tien_2 = tien_can_doi/2;
-            tien_can_doi %= 2;
-        }else
-        {
-            tien_can_doi -= 1;
-            tien_1++;
-        }
-    }
-    printf("\t%d =  %d to 500,\n\t\t%d to 200,\n\t\t%d to 100,\n\t\t%d to 50,\n\t\t%d to 20,\n\t\t%d to 10,\n\t\t%d to 5,\n\t\t%d to 2,\n\t\t%d to 1", tien, tien_500, tien_200, tien_100, tien_50, tien_20, tien_10, tien_5, tien_2, tien_1);
 
+    int to_tien[] = {500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int so_to[9]={0};
+    int first = 0;
+
+    for (int i = 0; i < 9; i++)
+    {
+        if (tien_can_doi >= to_tien[i])
+        {
+            if (first == 0 && tien_can_doi == to_tien[i])
+            {
+                first+=1;
+                continue;
+            }
+            
+            so_to[i] = tien_can_doi/to_tien[i];
+            tien_can_doi %= to_tien[i];
+            first+=1;
+        }
+        
+    }
+    
+    for (int i = 0; i < 9; i++)
+    {
+        printf("\n %d to %d", so_to[i], to_tien[i]);
+    }
 }
 // ĐỔI TIỀN
 
 void VayNganHangTraGop() {
-    printf("vay ngan hang");
+    const float lai_suat = 0.05;
+    const int ky_han = 12;
+
+    printf("\tvay ngan hang\n");
+    float tien_can_vay; //12_000_000
+    InVaNhapGiaTriDuongKhac0F("\tNhap so tien can vay: ",&tien_can_vay);
+
+    float goc_phai_tra = tien_can_vay / ky_han;
+    float tong=0;
+
+    printf("\nKy han\tLai phai tra\tGoc phai tra\tTien phai tra\tTien con lai");
+    for (int i = 0; i < ky_han; i++)
+    {
+        float lai_phai_tra = tien_can_vay * lai_suat;
+        float tien_phai_tra = lai_phai_tra + goc_phai_tra;
+        tien_can_vay -= goc_phai_tra;
+        tong+=tien_phai_tra;
+        printf("\n %d\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n",i+1,lai_phai_tra,goc_phai_tra,tien_phai_tra,tien_can_vay);
+    }
+    printf("tien phai tra la %.0f", tong);
+
 }
 
 void TinhLaiVayTienMuaXe() {

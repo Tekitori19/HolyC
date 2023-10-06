@@ -106,9 +106,9 @@ void SapXepMang() {
         mang[i] = gia_tri;
     }
 
-    for (int i = 0; i < phan_tu; i++)
+    for (int i = 0; i < phan_tu -1; i++)
     {
-        for (int j = 0; j < phan_tu; j++)
+        for (int j = i + 1; j < phan_tu; j++)
         {
             if (mang[i] > mang[j])
             {
@@ -150,8 +150,8 @@ void BinhPhuongCacPhanTuTrongMang() {
 }
 
 void main() {
-    TongCacSoChiaHetCho3();
-    MinMaxTrongMang();
-    SapXepMang();
+    // TongCacSoChiaHetCho3();
+    // MinMaxTrongMang();
+    // SapXepMang();
     BinhPhuongCacPhanTuTrongMang();
 }
