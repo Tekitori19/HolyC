@@ -267,12 +267,37 @@ void VayNganHangTraGop() {
         tong+=tien_phai_tra;
         printf("\n %d\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n",i+1,lai_phai_tra,goc_phai_tra,tien_phai_tra,tien_can_vay);
     }
-    printf("tien phai tra la %.0f", tong);
+    printf("\ttien phai tra la %.0f", tong);
 
 }
 
 void TinhLaiVayTienMuaXe() {
-    printf("vay tien mua xe");
+    const float lai_suat = 0.072/12;
+    const int ky_han = 24*12;
+    float tien_vay = 500000;
+
+    printf("\tvay tien mua xe\n");
+    float phan_tram_vay;
+    InVaNhapGiaTriDuongKhac0F("\tNhap phan tram vay toi da (0 => 1): ",&phan_tram_vay);
+    float tra_truoc = (1.0 - phan_tram_vay) * tien_vay;
+    tien_vay -= tra_truoc;
+
+
+    float goc_phai_tra = tien_vay / (float)ky_han;
+    // float tong=0;
+    printf("\nSo tien tra truoc la: %.0lf VND\n",tra_truoc);
+	printf("\nSo tien phai tra hang thang:");
+    printf("\nKy han\tLai phai tra\tGoc phai tra\tTien phai tra\tTien con lai");
+    for (int i = 0; i < ky_han; i++)
+    {
+        float lai_phai_tra = tien_vay * lai_suat;
+        float tien_phai_tra = lai_phai_tra + goc_phai_tra;
+        tien_vay -= goc_phai_tra;
+        // tong+=tien_phai_tra;
+        printf("\n %d\t%.0f\t\t%.0f\t\t%.0f\t\t%.0f\n",i+1,lai_phai_tra,goc_phai_tra,tien_phai_tra,tien_vay);
+    }
+    // printf("\ttien phai tra la %.0f", tong);
+
 }
 
 void SapXepThongTinSinhVien() {
