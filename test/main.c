@@ -1,4 +1,19 @@
 #include <stdio.h>
+#include <string.h>
+#include<ctype.h>
+
+char *strlwr(char *str)
+{
+  unsigned char *p = (unsigned char *)str;
+
+  while (*p) {
+     *p = tolower((unsigned char)*p);
+      p++;
+  }
+
+  return str;
+}
+
 
 void InVaNhapGiaTriKhongAm(char *text, int *so) {
     printf(text);
@@ -101,6 +116,46 @@ void NhiPhan2() {
 void main() {
     // NhiPhan();
     // NhiPhan2();
-    int n=0; for (int i=0; i<10; i+=4) n+=i;
-    printf("%d",n);
+    int n;
+    scanf("%d",&n);
+    int so_dem =n+1;
+    char ho_va_ten[so_dem][30];
+    printf("Nhap danh sach\n");
+    for (int i = 0; i < so_dem; i++)
+    {
+        if (i !=0 )
+        {
+            printf("\nMoi nhap nguoi thu %d: ", i);
+        }
+        //ERROR: buffer overfow(NEED TO CHECK) 
+        gets(ho_va_ten[i]);
+    }
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     printf("gia tri: ");
+    //     puts(ho_va_ten[i]);
+    // }
+    const char name[5]="cons";
+    char *point = strstr("draco", name);
+    printf("\n%s\n", point);
+
+    char ten[20];
+    printf("Nhap ten: ");
+    gets(ten);
+    int isFound = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (strcmp(ten, ho_va_ten[i])==0)
+        {
+            printf("\ntim thay\n");
+            // printf("%d\n", strlwr ("ADALDJALKDJ"));
+            isFound = 1;
+        }
+        
+    }
+    if (isFound == 0)
+    {
+        printf("Khong tim thay ten\n");
+    }
+
 }
