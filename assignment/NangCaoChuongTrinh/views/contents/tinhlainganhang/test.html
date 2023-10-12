@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Lãi Ngân Hàng</title>
+</head>
+<body>
+    <h1>Tính Lãi Ngân Hàng</h1>
+    <label for="tien_can_vay">Nhập số tiền cần vay:</label>
+    <input type="number" id="tien_can_vay" step="0.01" placeholder="Nhập số tiền">
+    <button onclick="calculateInterest()">Tính Lãi</button>
+    
+    <h2>Kết quả:</h2>
+    <ul id="resultList"></ul>
+
+    <script>
+        let resultList = document.getElementById("resultList");
+
+        // Tạo một hàm JavaScript để thêm kết quả vào danh sách
+        function addToResultArray(lai_phai_tra, tien_phai_tra, tien_con_lai) {
+            let listItem = document.createElement("li");
+            listItem.textContent = `Lãi phải trả: ${lai_phai_tra.toFixed(2)}, Tiền phải trả: ${tien_phai_tra.toFixed(2)}, Tiền còn lại: ${tien_con_lai.toFixed(2)}`;
+            resultList.appendChild(listItem);
+        }
+
+        // Hàm chạy khi nút được nhấn
+        function calculateInterest() {
+            try {
+                let tien_can_vay = parseFloat(document.getElementById("tien_can_vay").value);
+                Module._VayNganHangTraGop(tien_can_vay);
+            } catch (error) {
+                console.error("Error calculating interest:", error);
+            }
+        }
+    </script>
+
+    <script src="/contents/tinhlainganhang/main.js"></script>
+</body>
+</html>

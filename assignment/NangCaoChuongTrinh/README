@@ -1,0 +1,15 @@
+- Dùng emcc để dịch code C sang wasm và js (https://emscripten.org/docs/compiling/WebAssembly.html)
+- Dùng fiber golang để gửi files từ thư mục views lên trình duyệt (https://docs.gofiber.io/)
+
+
+    
+
+
+    + Tài nguyên tham khảo:
+        . https://github.com/michaelg29/webassembly-tutorial/tree/main
+        . Giao diện sử dụng tailwind css (https://tailwindcss.com/)
+    
+    + Yêu cầu:
+        . Cần cài đặt Golang và fiber framework
+        . Cần cài đặt emcc để dịch code sang wasm và js (nếu chỉ xem thì không cần cài emcc)
+    

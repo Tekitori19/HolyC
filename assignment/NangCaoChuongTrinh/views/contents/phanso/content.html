@@ -1,0 +1,137 @@
+{{template "partials/sidebar" .}}
+<main class="py-10 lg:pl-72">
+    <div class="px-4 sm:px-6 lg:px-8">
+      <!-- Your content -->
+      <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+          <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=orange&shade=600" alt="Your Company">
+          <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Tính toán phân số</h2>
+        </div>
+      
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+          <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+            <div class="space-y-6" >
+              <div class="bg-red-200 rounded-xl p-4">
+                <h3><strong>Phân số thứ nhất</strong></h3>
+                  <div>
+                    <label for="tu_1" class="block text-sm font-medium leading-6 text-gray-900">Mời nhập tử số thứ nhất:</label>
+                    <div class="mt-2">
+                      <input id="tu_1" step="1" pattern="\d+" name="tu_1" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="mau_1" class="block text-sm font-medium leading-6 text-gray-900">Mời nhập mẫu số thứ nhất:</label>
+                    <div class="mt-2">
+                      <input id="mau_1" step="1" pattern="\d+" name="mau_1" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+              </div>
+              <div class="bg-lime-200 rounded-xl p-4">
+                <h3><strong>Phân số thứ hai</strong></h3>
+                  <div>
+                    <label for="tu_2" class="block text-sm font-medium leading-6 text-gray-900">Mời nhập tử số thứ hai:</label>
+                    <div class="mt-2">
+                      <input id="tu_2" step="1" pattern="\d+" name="tu_2" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="mau_2" class="block text-sm font-medium leading-6 text-gray-900">Mời nhập mẫu số thứ hai:</label>
+                    <div class="mt-2">
+                      <input id="mau_2" step="1" pattern="\d+" name="mau_2" type="number" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+              </div>
+
+      
+              
+              <div>
+                <button onclick="run_wasm()" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Tính toán</button>
+              </div>
+            </div>
+      
+            <div>
+              <div class="relative mt-10">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                  <div class="w-full border-t border-gray-200"></div>
+                </div>
+                <div class="relative flex justify-center text-sm font-medium leading-6">
+                  <span class="bg-white px-6 text-gray-900">Kết quả</span>
+                </div>
+              </div>
+      
+              <div id="content" class="mt-6 font-bold leading-6 text-gray-900 rounded-md py-1.5 px-2"></div>
+
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  <script>
+
+    let checkInt;
+    import("../../js/function.js").then(({isInt, setCurrentCss})=> {
+      checkInt = isInt
+      setCurrentCss("Tính toán phân số")
+    })
+
+    function run_wasm() {
+      document.querySelector("#content").innerHTML = ""
+      let tu_1 = document.querySelector("#tu_1").value;
+      if (!checkInt(tu_1)) {
+        alert("vui lòng nhập số nguyên")
+        return
+      }
+
+      let mau_1 = document.querySelector("#mau_1").value;
+      if (!checkInt(mau_1) || mau_1 == 0) {
+        alert("vui lòng nhập số nguyên khác 0 cho mẫu số")
+        return
+      }
+
+      let tu_2 = document.querySelector("#tu_2").value;
+      if (!checkInt(tu_2)) {
+        alert("vui lòng nhập số nguyên")
+        return
+      }
+
+      let mau_2 = document.querySelector("#mau_2").value;
+      if (!checkInt(mau_2) || mau_2 == 0) {
+        alert("vui lòng nhập số nguyên khác 0 cho mẫu số")
+        return
+      }
+
+      Module._PhanSo(tu_1, mau_1, tu_2, mau_2)
+    }
+
+    function Print(x1, y1, x2, y2, x3, y3, x4, y4, rg) {
+        document.querySelector("#content").innerHTML +=`
+            <ul>
+                <li>Tổng 2 phân số là: ${x1}/${y1}</li>
+                <li>Hiệu 2 phân số là: ${x2}/${y2}</li>
+                <li>Tích 2 phân số là: ${x3}/${y3}</li>
+                <li>Thương 2 phân số là: ${x4}/${y4}</li>
+            </ul>
+            <div>
+              <div class="relative mt-10">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                  <div class="w-full border-t border-gray-200"></div>
+                </div>
+                <div class="relative flex justify-center text-sm font-medium leading-6">
+                  <span class="bg-white px-6 text-gray-900">Rút gọn/span>
+                </div>
+              </div>
+            <ul>
+                <li>Tổng là: ${Math.floor(x1/rg)}/${Math.floor(y1/rg)}</li>
+                <li>Hiệu là: ${Math.floor(x2/rg)}/${Math.floor(y2/rg)}</li>
+                <li>Tích là: ${Math.floor(x3/rg)}/${Math.floor(y3/rg)}</li>
+              <li>Thương là: ${Math.floor(x4/rg)}/${Math.floor(y4/rg)}</li>
+            </ul>
+        `
+      
+    }
+  </script>
+  <script src="/contents/phanso/main.js"></script>
+  

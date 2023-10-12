@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h> // Để sử dụng hàm isalpha
 
@@ -47,6 +48,7 @@ int DangNhap(char *user, int pass) {
     }
     
 }
+
 
 void main() {
     DemNguyenAmVaPhuAm();

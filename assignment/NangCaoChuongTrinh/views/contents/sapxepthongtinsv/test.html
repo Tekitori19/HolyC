@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản Lý Sinh Viên</title>
+    <script src="/contents/sapxepthongtinsv/main.js"></script>
+</head>
+<body>
+    <h1>Quản Lý Sinh Viên</h1>
+
+    <button onclick="themSinhVien()">Thêm Sinh Viên</button>
+    <button onclick="sapXepSinhVien()">Sắp Xếp và In Kết Quả</button>
+
+    <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id">
+    </div>
+    <div>
+        <label for="diem">Điểm:</label>
+        <input type="number" step="0.01" id="diem">
+    </div>
+
+    <ul id="ketQua"></ul>
+
+    <script>
+        function themSinhVien() {
+            const id = parseInt(document.getElementById("id").value);
+            const diem = parseFloat(document.getElementById("diem").value);
+            Module._ThemSinhVien(id, diem);
+        }
+
+        function sapXepSinhVien() {
+            Module._SapXepSinhVien();
+        }
+
+        function addToArray(id) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `ID: ${id}`;
+            document.getElementById("ketQua").appendChild(listItem);
+        }
+    </script>
+</body>
+</html>

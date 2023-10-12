@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include<ctype.h>
+#include <ctype.h>
 
 char *strlwr(char *str)
 {
@@ -113,49 +114,103 @@ void NhiPhan2() {
     
 }
 
+int SoSanh(const void *a,const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+struct SinhVien
+{
+    int MaSV;
+    char HoTen[20];
+    float DiemToan;
+    float DiemLi;
+    float DiemHoa;
+    float DiemTB;
+};
+
+
 void main() {
     // NhiPhan();
     // NhiPhan2();
-    int n;
-    scanf("%d",&n);
-    int so_dem =n+1;
-    char ho_va_ten[so_dem][30];
-    printf("Nhap danh sach\n");
-    for (int i = 0; i < so_dem; i++)
-    {
-        if (i !=0 )
-        {
-            printf("\nMoi nhap nguoi thu %d: ", i);
-        }
-        //ERROR: buffer overfow(NEED TO CHECK) 
-        gets(ho_va_ten[i]);
-    }
-    // for (int i = 0; i < 5; i++)
+    // int n;
+    // scanf("%d",&n);
+    // int so_dem =n+1;
+    // char ho_va_ten[so_dem][30];
+    // printf("Nhap danh sach\n");
+    // for (int i = 0; i < so_dem; i++)
     // {
-    //     printf("gia tri: ");
-    //     puts(ho_va_ten[i]);
+    //     if (i !=0 )
+    //     {
+    //         printf("\nMoi nhap nguoi thu %d: ", i);
+    //     }
+    //     //ERROR: buffer overfow(NEED TO CHECK) 
+    //     gets(ho_va_ten[i]);
     // }
-    const char name[5]="cons";
-    char *point = strstr("draco", name);
-    printf("\n%s\n", point);
+    // // for (int i = 0; i < 5; i++)
+    // // {
+    // //     printf("gia tri: ");
+    // //     puts(ho_va_ten[i]);
+    // // }
+    // const char name[5]="cons";
+    // char *point = strstr("draco", name);
+    // printf("\n%s\n", point);
 
-    char ten[20];
-    printf("Nhap ten: ");
-    gets(ten);
-    int isFound = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (strcmp(ten, ho_va_ten[i])==0)
-        {
-            printf("\ntim thay\n");
-            // printf("%d\n", strlwr ("ADALDJALKDJ"));
-            isFound = 1;
-        }
+    // char ten[20];
+    // printf("Nhap ten: ");
+    // gets(ten);
+    // int isFound = 0;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (strcmp(ten, ho_va_ten[i])==0)
+    //     {
+    //         printf("\ntim thay\n");
+    //         // printf("%d\n", strlwr ("ADALDJALKDJ"));
+    //         isFound = 1;
+    //     }
         
-    }
-    if (isFound == 0)
-    {
-        printf("Khong tim thay ten\n");
-    }
+    // }
+    // if (isFound == 0)
+    // {
+    //     printf("Khong tim thay ten\n");
+    // }
+    
+//     int values[] = { 88, 56, 100, 2, 25 };
 
+//    int n;
+
+//    printf("Before sorting the list is: \n");
+//    for( n = 0 ; n < 5; n++ ) {
+//       printf("%d ", values[n]);
+//    }
+
+//     qsort(values,5,sizeof(int),SoSanh);
+//     printf("\nAfter sort\n");
+//    for( n = 0 ; n < 5; n++ ) {
+//       printf("%d ", values[n]);
+//    }
+
+    struct SinhVien sv;
+
+    printf("Nhap ma sv\n");
+    scanf("%d ", &sv.MaSV);
+    // fflush(stdin);
+    printf("Nhap ten sv: \n");
+    scanf("%s", &sv.HoTen);
+    // gets(sv.HoTen);
+    // fgets(sv.HoTen, 20, stdin);
+    // int chuoi = strlen(sv.HoTen);
+    // if (chuoi > 0)
+    
+    printf("Nhap diem toan\n");
+    scanf("%f", &sv.DiemToan);
+    
+    printf("Nhap diem li\n");
+    scanf("%f", &sv.DiemLi);
+    
+    printf("Nhap diem hoa\n");
+    scanf("%f", &sv.DiemHoa);
+    sv.DiemTB = (sv.DiemToan + sv.DiemLi + sv.DiemHoa)/3;
+
+    printf("Ten MaSV Toan Li Hoa TB\n");
+    printf("%s %d %.1f %.1f %.1f %.1f\n", sv.HoTen, sv.MaSV, sv.DiemToan, sv.DiemLi, sv.DiemHoa, sv.DiemTB);
 }
