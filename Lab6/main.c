@@ -150,8 +150,8 @@ void BinhPhuongCacPhanTuTrongMang() {
 }
 
 void main() {
-    // TongCacSoChiaHetCho3();
-    // MinMaxTrongMang();
-    // SapXepMang();
+    TongCacSoChiaHetCho3();
+    MinMaxTrongMang();
+    SapXepMang();
     BinhPhuongCacPhanTuTrongMang();
 }

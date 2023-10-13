@@ -44,13 +44,13 @@ void HoanVi(int *so_1, int *so_2) {
 void main() {
     // TÌM GIÁ TRỊ LỚN NHẤT
     {
-    //     int so_1, so_2, so_3;
-    //     printf("Nhap lan luot 3 so: ");
-    //     scanf("%d %d %d", &so_1, &so_2, &so_3);
+        int so_1, so_2, so_3;
+        printf("Nhap lan luot 3 so: ");
+        scanf("%d %d %d", &so_1, &so_2, &so_3);
         
-    //     // int value = GiaTriLonNhat(so_1, so_2, so_3);
-    //     int value = MAX(MAX(so_1,so_2),so_3);
-    //     printf("%d\n la gia tri lon nhat", value);
+        // int value = GiaTriLonNhat(so_1, so_2, so_3);
+        int value = MAX(MAX(so_1,so_2),so_3);
+        printf("%d\n la gia tri lon nhat", value);
     }
     // TÌM GIÁ TRỊ LỚN NHẤT
 
